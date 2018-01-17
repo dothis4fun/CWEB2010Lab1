@@ -69,6 +69,17 @@ namespace CWEB2010Lab1Try2
             }
             return tempAnswer;
         }
+        static void PlayBeeb(bool isRight)
+        {
+            if (isRight)
+            {
+                Console.Beep(1600, 200);
+            }
+            else
+            {
+                Console.Beep(440, 200);
+            }
+        }
         static void GetAnswers(out Exam testExam, ref bool shouldContinue)
         {
             string tempAnswer;
@@ -97,6 +108,7 @@ namespace CWEB2010Lab1Try2
                     testExam.SetQuestionWrongList(i+1);
                 }
                 ColorLine(i, isRight, testExam.TestersAnswers[i]);
+                PlayBeeb(isRight);
             }
             Console.WriteLine(testExam.ToString());
             Console.WriteLine("Do you want to grade another test? (Y/N)");
